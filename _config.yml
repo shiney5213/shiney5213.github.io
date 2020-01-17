@@ -2,7 +2,7 @@ name: Alpha
 description: Alphs template for Jekyll
 baseurl: '/Alpha-Jekyll-Theme'
 
-url: https://github.com/shiney5213/shiney5213.github.io
+url: https://shiney5213.github.io
 
 paginate: 10
 
