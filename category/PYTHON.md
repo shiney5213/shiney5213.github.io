@@ -1,8 +1,7 @@
----
+\---
 
-​---
-layoug: category
+layout: category
+
 title: PYTHON
-​---
----
 
+\---
