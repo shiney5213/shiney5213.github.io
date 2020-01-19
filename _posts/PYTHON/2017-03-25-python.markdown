@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome to PYTHON"
 date:   2017-03-25 21:32:40 +0200
 comments: true
 img:
