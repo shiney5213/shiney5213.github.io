@@ -1,16 +1,14 @@
 # Profile information
-name: Fresh
-title: Fresh - Free Jekyll Theme
+name: 언젠가는 개발자가 되겠지
+title: Fresh 
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 permalink: ':title/'
-baseurl: "" # the subpath of your site, e.g. /blog
-# baseurl: "/fresh" # the subpath of your site, e.g. /blog
-
-url: https://shiney5213.github.io/ # the base hostname & protocol for your site, e.g. http://example.com
-remote_theme : artemsheludko/fresh
+baseurl: "/fresh" # the subpath of your site, e.g. /blog
+url: "https://shiney5213.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+remote_thema: artemsheludko/fresh
 
 # Social
 facebook: #Add your Facebook
