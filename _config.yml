@@ -10,6 +10,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 # baseurl: "/fresh" # the subpath of your site, e.g. /blog
 
 url: https://shiney5213.github.io/ # the base hostname & protocol for your site, e.g. http://example.com
+remote_theme : artemsheludko/fresh
 
 # Social
 facebook: #Add your Facebook
