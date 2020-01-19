@@ -29,7 +29,7 @@ permalink: '/classification/'
 
 - accuracy: 56.16
 
-  ![ex_screenshot](images/200118_1-1579417355889.png)
+  ![200118_1-1579417355889](images/200118_1-1579417355889.png)
 
   
 
