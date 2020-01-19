@@ -5,8 +5,8 @@ layout: default
 {% for post in paginator.posts %}
 <article class="main-article">
   <div class="wrap-content">
-    
-    <header class="site-category">
+
+    <!-- <header class="site-category">
       <ul>
         
         {% assign pages_list = site.pages %}
@@ -20,14 +20,14 @@ layout: default
         {% endfor %}
         
     </ul>
-    </header>
+    </header> -->
 
 
 
-    <!-- <header class="header-article">
+    <header class="header-article">
       <h2 class="title-article"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
       <div class="post-date"><span>{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-    </header> -->
+    </header>
     {% if post.img %}
        <img class="post-image" src={{ "/assets/img/" | prepend: site.baseurl | append: post.img }} alt="{{post.title}}">
     {% endif %}
