@@ -1,29 +1,43 @@
 ---
 layout: post
-title:  "Welcome to classification!"
-date:   2017-03-25 21:32:40 +0200
-img:
+title:  "Transfer Learning with IncentionResnetV2"
+date:   2020-01-19 15:32:40 +0200
+img: ![200118_1-1579417355889](images/200118_1-1579417355889.png)
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.
 categories: classification
 permalink: '/classification/'
-
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+## 강아지 품종 분류 모델 개발 중.. 
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+##  1. 개요
 
-Jekyll also offers powerful support for code snippets:
+#### 1) 강아지 131종
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+#### 2) dataset
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+- train :  28338 
+- val: 4928 (전제 dataset의 0.15% )
+- test : 9949
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+#### 3) 모델
+
+- InceptionResnetV2
+- loss: categorical_crossentropyㄴ
+- optimizer: Adam(lr = .0001)
+
+#### 4) 평가
+
+- accuracy: 56.16
+
+  ![ex_screenshot](images/200118_1-1579417355889.png)
+
+  
+
+#### 5) 해석
+
+- epoch 7번째 어떻게 저렇게 학습이 일어나는 것일까?
+
+## 2. 개선할 점
+
+- 일단 데이터셋을 다시 만들기
+- 120개 데이터셋으로 코드 구현되는지 확인하기
