@@ -2,7 +2,7 @@
 layout: post
 title:  "Transfer Learning with IncentionResnetV2"
 date:   2020-01-19 15:32:40 +0200
-img: ![200118_1-1579417355889](images/200118_1-1579417355889.png)
+img: 200118_1.png
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.
 categories: classification
 permalink: '/classification/'
@@ -33,7 +33,7 @@ permalink: '/classification/'
 
 #### 5) 해석
 
-#### ![200118_1-1579417355889](images/200118_1-1579417355889.png)
+#### ![200118_1](images/200118_1.png)
 
 - epoch 7번째 어떻게 저렇게 학습이 일어나는 것일까?
 
