@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "CPU vs GPU"
+img: china_tiger_leaping_gorge.jpg
+date:   2020-01-20 00:00:00 +0200
+description: Curabitur vulputate enim at metus malesuada, in iaculis nisl tincidunt. Mauris dapibus ut ante ornare ullamcorper. Vivamus ultrices erat lorem. Phasellus pretium nisl ac elit porttitor, id condimentum velit aliquam.
+categories: ECT
+permalink: '/ect/'
+
+---
+
+cpu 와 GPU차이
+- 역할
+- https://www.youtube.com/watch?v=fKK933KK6Gg
