@@ -29,7 +29,7 @@ permalink: '/classification/'
 
 - accuracy: 56.16
 
- ![200118_1](images/200118_1.png)
+![200118_1](images/200118_1.png)
   
 
 #### 5) 해석
