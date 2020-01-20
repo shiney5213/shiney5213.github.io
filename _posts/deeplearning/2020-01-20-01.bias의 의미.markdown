@@ -4,8 +4,8 @@ title:  "CPU vs GPU"
 img: china_tiger_leaping_gorge.jpg
 date:   2020-01-20 00:00:00 +0200
 description: Curabitur vulputate enim at metus malesuada, in iaculis nisl tincidunt. Mauris dapibus ut ante ornare ullamcorper. Vivamus ultrices erat lorem. Phasellus pretium nisl ac elit porttitor, id condimentum velit aliquam.
-categories: Deep Learning
-permalink: '/deeplearng/'
+categories: DeepLearning
+permalink: '/deeplearning/'
 ---
 
 ## y = ax + b에서 b의 의미
