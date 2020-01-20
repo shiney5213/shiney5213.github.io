@@ -25,16 +25,14 @@ permalink: '/classification/'
 - loss: categorical_crossentropyㄴ
 - optimizer: Adam(lr = .0001)
 
-#### 4) 평가
+#### 4) 결과
 
 - accuracy: 56.16
 
 ![200118_1](images/200118_1.png)
   
 
-#### 5) 해석
-
-
+## 2. 해석
 ##### epoch 7번째 어떻게 저렇게 학습이 일어나는 것일까?
 - optimizer를 Adam으로 써서 그런것이라는 주변 지인의 조언이 있었으나, 
 - 학습을 batch size를 넣어서 하는 것이기 때문에 이는 굉장히 일반적인 결과라고 함. 실제로 이런 일이 많다고 함.
