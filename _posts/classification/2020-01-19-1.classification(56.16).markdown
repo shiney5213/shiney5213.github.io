@@ -28,11 +28,11 @@ permalink: '/classification/'
 #### 4) 평가
 
 - accuracy: 56.16
+
  ![200118_1](images/200118_1.png)
   
 
 #### 5) 해석
-
 
 
 ##### epoch 7번째 어떻게 저렇게 학습이 일어나는 것일까?
@@ -46,7 +46,8 @@ permalink: '/classification/'
 ##### 왜 test accuracy가 56% 뿐일까?
 - train data와 test data가 너무 다르기 때문
 - train data가 강아지 품종 데이터에 대해서 대표성을 띄어야 하는데....대표성이 없었기 때문에 이런 문제가 발생함.
-- 해결방안으로는 data augmentaion을 추천받았으나...이미 keras ImageDataGenerator로 augmentation을 진행한 상황임...ㅜㅠ
+- 해결방안으로는 더 깊은 layer와  data augmentaion을 추천받았으나...
+- 이미 InceptionResnetV2와 keras ImageDataGenerator로 augmentation을 진행한 상황임...ㅜㅠ
 
 ## 2. 개선할 점
 
