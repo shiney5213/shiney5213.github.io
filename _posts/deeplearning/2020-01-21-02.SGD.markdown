@@ -65,5 +65,7 @@ train하는데는 영향을 주지 않기 때문에 ..dataset이 적은 경우�
 
 [배치학습과 온라인 학습](https://stickie.tistory.com/44)
 
-
+---
+- reference
+ [Wikipedia -SGD]( https://en.wikipedia.org/wiki/Stochastic_gradient_descent)
 
