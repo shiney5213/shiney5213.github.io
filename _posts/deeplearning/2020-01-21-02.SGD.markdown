@@ -37,10 +37,10 @@ batch size= 1일 때 데이터 중 1개를 랜덤으로 뽑아서 weight를 업�
 [SGD_blog](https://blog.naver.com/wildgrapes18/221550519186)
 
 ---
-#### GD: full batch 경사하강법
+### GD: full batch 경사하강법
 데이터가 1000개라면 loss를 구할 때 1000개의 데이터에 대해 오차를 구할 때 제곱 연산을 1000번해야 하니 시간도 오래 걸리고, 계산량도 너무 많다 (epoch까지 고려한다면 정말 많을 것 같다)
 
-#### SGD: mini batch 경사하강법
+### SGD: mini batch 경사하강법
 데이터가 1000개이고 batch size = 100, epoch = 1000이라면라면
 **데이터를 대표하는 샘플 32개에 대해서만 loss를 계산하면 되므로 계산량이 적고, 빠름**
 - 1000(epoch) * 10 (데이어 수/ batch size) = 10000번 계산 -> 더 빠름
@@ -55,13 +55,17 @@ dataset을 나눌 때 train, validation, test 이렇게 3개로 나누는데...
 계속 validation  data에 대해 의문이 들었다..
 다시 알아본 결과 validation data는 정말 검정set이다.
 train하는데는 영향을 주지 않고, train data로 학습된 모델을 검정하여 
+
 **사용자가 log기록(history)을 통하여 overfitting/ underfitting여부를 확인할 수 있도록 하는 역할을 한다**
+
 train하는데는 영향을 주지 않기 때문에 ..dataset이 적은 경우에는 val을 굳이 나누지 않아도 된다고 한다(오버피팅이 발생하지 않는다는 전제하에)
 
 
 ---
 ## 배치학습 vs online 학습 vs offline학습 
+
 같은 batch라는 용어가 나와서 헛갈려서 다시 찾아본 개념..
+
 
 [배치학습과 온라인 학습](https://stickie.tistory.com/44)
 
