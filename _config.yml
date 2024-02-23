@@ -55,6 +55,8 @@ menu:
     url:               /blog/
   - title:             Documentation
     url:               /docs/
+  - title:             NLP
+    url:               /nlp/
   - title:             Book
     url:               /books/
   - title:             About
