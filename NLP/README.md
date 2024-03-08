@@ -19,23 +19,65 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 {:.note}
 
 ## Text Preprocessing
-* [Tokenization]{:.heading.flip-title} --- How to install and run Hydejack.
+* [Tokenization]{:.heading.flip-title} --- Tokenization의 개념과 다양한 알고리즘 소개
+* [└Sentencepeice]{:.heading.flip-title} --- Sentencepeice 라이브러리에서 BPE(Bite Pair Encoding) 알고리즘 구현
+* [└Tokenizers]{:.heading.flip-title} --- Huggingface의 Tokenizers 라이브러리에서 Wordpiece 알고리즘 구현
+* [Embedding]{:.heading.flip-title} --- 
+* [└Skip-gram]]{:.heading.flip-title} --- 
+* [└Word2Vec]{:.heading.flip-title} --- 젠심(Gensim) 라이브러리를 활용하여 Word2Vec 모델 구현
+* [└fastText]{:.heading.flip-title} --- 
+
+## RNN Series Models
+1. RNN : Recurrent neural network based language model (2010) (처음 등장은 1986)
+2. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
+3. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
+4. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
 
 
-## Getting started
-* [Install]{:.heading.flip-title} --- How to install and run Hydejack.
-* [Upgrade]{:.heading.flip-title} --- You can skip this if you haven't used Hydejack before.
-* [Config]{:.heading.flip-title} --- Once Jekyll is running you can start editing your config file.
+##  Attention Mechanism
+5. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
+6. Transformer : Attention is All You Need (2017)
 {:.related-posts.faded}
 
-## Using Hydejack
-* [Basics]{:.heading.flip-title} --- How to add different types of content.
-* [Writing]{:.heading.flip-title} --- Producing markdown content for Hydejack.
-* [Scripts]{:.heading.flip-title} --- How to include 3rd party scripts on your site.
-* [Build]{:.heading.flip-title} --- How to build the static files for deployment.
-* [Advanced]{:.heading.flip-title} --- Guides for more advanced tasks.
+
+## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
+7. Word2Vec : Efficient Estimation of Word Representations in Vector Space (2013)
+8. GloVe : Global Vectors for Word Representation (2014)
+9. FastText : Enriching Word Vectors with Subword Information (2016)
+10. ELMo : Deep contextualized word representations (2018)
 {:.related-posts.faded}
+
+## Pre-trained language models based on the Transformer architecture
+11. GPT-1 : Improving Language Understanding by Generative Pre-Training (2018)
+12. BERT : Pre-training of Deep Bidirectional Transformers for Language Understanding (2018)
+13. GPT-2 : Language Models are Unsupervised Multitask Learners (2018)
+14. RoBERTa : RoBERTa: A Robustly Optimized BERT Pretraining Approach (2019)
+15. ALBERT: A Lite BERT for Self-supervised Learning of Language Representations (2019)
+16. ELECTRA : Pre-training Text Encoders as Discriminators Rather Than Generators (2020)
+17. XLNet : Generalized Autoregressive Pretraining for Language Understanding (2019)
+
+
+## Large Language Model
+18. Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (2019) - T5 논문 
+19. GPT-3 : Language Models are Few-Shot Learners (2020)
+20. Training language models to follow instructions with human feedback (2022) - InstructGPT 논문 
+21. FINETUNED LANGUAGE MODELS ARE ZERO-SHOT LEARNERS (2022) - FLAN 논문
+22. LLaMA: Open and Efficient Foundation Language Models (2023) - LLaMA 논문 
+23.  Llama 2: Open Foundation and Fine-Tuned Chat Models (2023)
+24. GPT-4 Technical Report (2023)
+
+## Parameter-Efficient Fine Tuning (PeFT)
+25. LoRA: Low-Rank Adaptation of Large Language Models (2021)
+26. GPT Understands, Too (2021) : Prefix Tuning
++) P-Tuning: Prompt Tuning Can Be Comparable to Fine-tuning Across Scales and Tasks : P-tuning v2 논문 
+27. Towards a Unified View of Parameter-Efficient Transfer Learning (2022) : Adapter 
++) LLM-Adapters: An Adapter Family for Parameter-Efficient Fine-Tuning of Large Language Models (2023)
+
+## Quantization 논문 
+26. LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale (2022)
+27. QLoRA: Efficient Finetuning of Quantized LLMs (2023)
+
 
 ## Other
 * [LICENSE]{:.heading.flip-title} --- The license of this project.
@@ -44,7 +86,12 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 {:.related-posts.faded}
 
 
+
+
 [Tokenization]: 1-tokenization.md
+[└Sentencepeice]: 1-sentencepiece.md
+[└Tokenizers]: 1-tokenizers.md
+[Embedding]: 2-embedding.md
 [install]: install.md
 [upgrade]: upgrade.md
 [config]: config.md

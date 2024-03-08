@@ -24,8 +24,6 @@ or change the theme of [an existing site](#existing-sites).
 {:.note}
 <br>
 
-> 이러한 자연어의 특성을 고려하여 구조, 의미, 맥락을 분석하고 이해할 수 있는 알고리즘과 모델을 개발해야 한다.
-
 
  
 ## 토큰화(tokenization)
