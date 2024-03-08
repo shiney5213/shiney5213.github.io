@@ -1,6 +1,9 @@
 *.txt
 *.pth
 *.csv
+*.model
+*.vocab
+*.json
 
 # Ignore docs files
 _gh_pages

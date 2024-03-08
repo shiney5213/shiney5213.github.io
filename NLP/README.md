@@ -27,26 +27,29 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 * [└Word2Vec]{:.heading.flip-title} --- 젠심(Gensim) 라이브러리를 활용하여 Word2Vec 모델 구현
 * [└fastText]{:.heading.flip-title} --- 
 
+## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
+* [Word2Vec]{:.heading.flip-title} --- Efficient Estimation of Word Representations in Vector Space (2013)
+* [└CBoW]{:.heading.flip-title} ---
+2. GloVe : Global Vectors for Word Representation (2014)
+3. FastText : Enriching Word Vectors with Subword Information (2016)
+4. ELMo : Deep contextualized word representations (2018)
+{:.related-posts.faded}
+
 ## RNN Series Models
-1. RNN : Recurrent neural network based language model (2010) (처음 등장은 1986)
-2. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
-3. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
-4. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
+5. RNN : Recurrent neural network based language model (2010) (처음 등장은 1986)
+6. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
+7. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
+8. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
 
 
 ##  Attention Mechanism
-5. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
-6. Transformer : Attention is All You Need (2017)
+9. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
+10. Transformer : Attention is All You Need (2017)
 {:.related-posts.faded}
 
 
-## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
-7. Word2Vec : Efficient Estimation of Word Representations in Vector Space (2013)
-8. GloVe : Global Vectors for Word Representation (2014)
-9. FastText : Enriching Word Vectors with Subword Information (2016)
-10. ELMo : Deep contextualized word representations (2018)
-{:.related-posts.faded}
+
 
 ## Pre-trained language models based on the Transformer architecture
 11. GPT-1 : Improving Language Understanding by Generative Pre-Training (2018)
@@ -92,6 +95,13 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 [└Sentencepeice]: 1-sentencepiece.md
 [└Tokenizers]: 1-tokenizers.md
 [Embedding]: 2-embedding.md
+[Word2Vec]: 3-Word2Vec.md
+[└CBoW]: 3-Word2Vec-CBow.md
+[└Skip-gram]: 3-Word2Vec-Skip-gram.md
+
+
+
+
 [install]: install.md
 [upgrade]: upgrade.md
 [config]: config.md
