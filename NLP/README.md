@@ -30,9 +30,9 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 ## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
 * [Word2Vec]{:.heading.flip-title} --- Efficient Estimation of Word Representations in Vector Space (2013)
 * [└CBoW]{:.heading.flip-title} ---
-2. GloVe : Global Vectors for Word Representation (2014)
-3. FastText : Enriching Word Vectors with Subword Information (2016)
-4. ELMo : Deep contextualized word representations (2018)
+* [GloVe]{:.heading.flip-title} --- Global Vectors for Word Representation (2014)
+1. FastText : Enriching Word Vectors with Subword Information (2016)
+2. ELMo : Deep contextualized word representations (2018)
 {:.related-posts.faded}
 
 ## RNN Series Models
@@ -97,7 +97,7 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 [Embedding]: 2-embedding.md
 [Word2Vec]: 3-Word2Vec.md
 [└CBoW]: 3-Word2Vec-CBow.md
-[└Skip-gram]: 3-Word2Vec-Skip-gram.md
+[GloVe]: 4-GloVe.md
 
 
 
