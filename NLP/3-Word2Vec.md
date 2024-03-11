@@ -9,6 +9,7 @@ sitemap: false
 
 
 - Title: Efficient Estimation of Word Representations in Vector Space
+- Tomas Mikolov, Kai Chen, Greg Corrado, Jeffrey Dean
 - paper: [download]
 - journal: 
 - year : 2013
