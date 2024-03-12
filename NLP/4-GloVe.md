@@ -15,10 +15,11 @@ sitemap: false
 - Subjects:	Computation and Language (cs.CL)
 - Jeffrey Pennington, Richard Socher, and Christopher Manning
 - summary
+  > - GloVe = Gloval Veacors의 줄임말 -> 모델이 global corpus 통계를 포착 가능
   > - count 기반의 LSA(Latent Semantic Analysis)와 예측 기반의 Word2Vec의 한계를 보완하여 두 가지 모두 사용
-  > - 목표 : 
-  > - 모델 :  
-  > - 결과 :  
+  > - 목표 :  vector Representation 생성
+  > - 모델 :  global log-bilinear regression model
+  > - 결과 :  단어 유추 작업, 유사성 작업 및 명명된 개체 인식에 대한 성능이 향상
   > - 의미 :  카운트 기반 방법의 이점과 예측 기반 방법 모두 사용
 - 사용 기법
   > - global word-word co-occurrence Matrix
@@ -169,7 +170,7 @@ sitemap: false
 - Word2Vec : negative sample의 개수가 10을 넘어가면 정확도 감소
 
 
-## (2) Related Wordk
+## (2) Related Work
 ### Matrix Factorization Methods
 - 저차원 단어 표현을 생성하기 위한 방법 ( 예: LSA, HAL 등)
 - 단점: 가장 빈번한 단어가 유사도 측정에 많은 영향을 미침
@@ -192,3 +193,79 @@ sitemap: false
 - 단점
   > -  동시발생 행렬을 직접 다루지 않음
   > - 전체 말뭉치를 대상으로 context windows를 스캔하지만 많은 데이터를 반복하여 사용하지 못함
+
+
+## (3) The GloVe Model
+### notaion
+> - X: 단어-단어 동시 발행 빈도
+> - X_ij : 단어 i가 문맥 단어 일 때 단어 j가 나타나는 횟수
+> - X_i = ∑ k X_ik -> 단어 i가 맥락단어일 때 어던 단어가 나타나는 횟수
+> - P_ij = P(j|i) = X_ij / X_i -> 맥락 단어 i가 있을 때 단어 j가 나타날 확률
+> - F() : model
+> - W_i : 중신 단어의 임베딩 벡터
+> - W_k~: 주변 단어의 임베딩 벡터
+
+- 동시 발생 확률로부터 의미를 추출하는 예
+> - i = ice, j = steam 일 때
+> - i, j와의 관계를 알기 위해서 다양한 증거 단어인 k와의 동시 발행 확률의 비율을 조사
+> - k = solid라면(ice와는 관련이 있지만 steam과는 관련이 없음)
+  >> - P_ik / P_jk = P(solid|ice)/ P(solid|steam) = 큰 값
+> - k = gas 라면(ice와는 관련이 없지만 steam과는 관련이 있음)
+  >> - P_ik / P_jk = P(gas|ice)/ P(gas|steam) = 작은 값 
+> - k = ice, steam과 모두 관련이 없다면
+  >> - P_ik / P_jk = 약 1
+> - 관련된 단어/ 무관한 단어와의 차이 구별 가능
+> 
+![table1](/assets/img/nlp/4_GloVE_table1.png){: width="100%" height="100%"}
+
+  
+### model
+(1) Pik / Pjk 비율이 세 단어 i, j 및 k에 의존하므로 
+![formula1](/assets/img/nlp/4_GloVE_formula1.png){: width="70%" height="70%"}
+
+(2) F 함수에서 단어 벡터 공간에서 P_ik / P_jk  비율의 정보를 인코딩 하기 위해
+-  선형 구조인 벡터 공간의 특성 이용 -> 벡터 차이 이용
+![formula2](/assets/img/nlp/4_GloVE_formula2.png){: width="70%" height="70%"}
+
+(3)  vector 연산을 위해 
+- 2의 식에서 F의 인수는 벡터, 오른쪽 항은 스칼라이므로 dot product 적용
+![formula3](/assets/img/nlp/4_GloVE_formula3.png){: width="70%" height="70%"}
+
+(4) Relabeling에 의한 symmetry를 만족하기 위해 그룹 (R,+)와 (R>0, ×)에 대해 group homomorphism([준동형성])이 필요
+- 단어-단어 동시 발생 행렬에서 단어와 맥락 단어의 구별은 임의적임
+-  w ↔ ˜w를 교환하는 것뿐만 아니라 X ↔ X^T도 교환 가능해야 함.
+![formula4](/assets/img/nlp/4_GloVE_formula4.png){: width="70%" height="70%"}
+[준동형성]: https://ko.wikipedia.org/wiki/%EC%A4%80%EB%8F%99%ED%98%95
+
+(5) 3의 방정식에 의해 4를 풀면
+![formula5](/assets/img/nlp/4_GloVE_formula5.png){: width="70%" height="70%"}
+
+(6) F = exp이면
+- F(x) = exp(x)이면 4, 6의 뺄셈이 나눗셈으로 변환되어 각 단어들 사이의 연관성을 자유롭게 표현 가능
+- F(x)= exp일 때 log식으로 표현하면
+![formula6](/assets/img/nlp/4_GloVE_formula6.png){: width="70%" height="70%"}
+
+(7) 6의 연산을 간편하게 하기 위해
+- 오른쪽항의 log(Xi) 때문에 교환대칭성이 나타나지 않음
+- bias를 추가해서 log(Xi) = bi로 대체, ˜wk에 대한 추가적인 바이어스 b˜k를 추가하여 대칭성 복원
+![formula7](/assets/img/nlp/4_GloVE_formula7.png){: width="70%" height="70%"}
+
+### loss function
+![formula8_1](/assets/img/nlp/4_GloVE_formula8_1.png){: width="70%" height="70%"}
+
+(8) log(X_ik)에서 X_ik가 0이 되는 경우 log값이 발산하므로 -> 정보량에 가중치(f(X_ij))를 추가
+- 동시발생 행렬에서 동시 등장 빈도의 값 X_ik가 굉장히 낮은 경우에는 정보에 도움이 되지 않음
+- X_ik의 값에 영향을 받는 가중치 함수(Weighting function)을 손실 함수에 도입
+![formula8](/assets/img/nlp/4_GloVE_formula8.png){: width="70%" height="70%"}
+
+-  가중치 함수(Weighting function)
+> - 발생 확률이 적은 단어에 대해서는 가중치 비중을 빈도에 따라 줄일 수 있음.
+> - 임계값: xmax = 100, α = 3/4 으로 설정
+![formula9](/assets/img/nlp/4_GloVE_formula9.png){: width="70%" height="70%"}
+
+
+
+
+
+## Reference
+- [논문 리뷰] GloVe: Global Vectors for Word Representation: https://imhappynunu.tistory.com/14

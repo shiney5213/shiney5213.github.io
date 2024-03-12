@@ -11,28 +11,19 @@ permalink: /nlp/
 자연어(National Language)는 프로그래밍 언어와 구별되는 사람들이 사용하는 언어를 의미한다.<br>
 자연어 처리(National Language Processing, NLP)는 컴퓨터가 인간의 언어를 이해하고, 해석 및 생성하기 위한 기술을 말한다.
 
-Here you should be able to find everything you need to know to accomplish the most common tasks when blogging with Hydejack.
-Should you think something is missing, [please let me know](mailto:mail@qwtel.com).
-Should you discover a mistake in the docs (or a bug in general) feel free to [open an issue](https://github.com/hydecorp/hydejack/issues) on GitHub.
-
-While this manual tries to be beginner-friendly, as a user of Jekyll it is assumed that you are comfortable running shell commands and editing text files.
-{:.note}
 
 ## Text Preprocessing
 * [Tokenization]{:.heading.flip-title} --- Tokenization의 개념과 다양한 알고리즘 소개
 * [└Sentencepeice]{:.heading.flip-title} --- Sentencepeice 라이브러리에서 BPE(Bite Pair Encoding) 알고리즘 구현
 * [└Tokenizers]{:.heading.flip-title} --- Huggingface의 Tokenizers 라이브러리에서 Wordpiece 알고리즘 구현
-* [Embedding]{:.heading.flip-title} --- 
-* [└Skip-gram]]{:.heading.flip-title} --- 
-* [└Word2Vec]{:.heading.flip-title} --- 젠심(Gensim) 라이브러리를 활용하여 Word2Vec 모델 구현
-* [└fastText]{:.heading.flip-title} --- 
 
 ## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
+* [Embedding]{:.heading.flip-title} ---Embedding의 기본 개념과 다양한 알고리즘 소개
 * [Word2Vec]{:.heading.flip-title} --- Efficient Estimation of Word Representations in Vector Space (2013)
-* [└CBoW]{:.heading.flip-title} ---
+* [└CBoW]{:.heading.flip-title} ---Word2Vec 논문의 CBoW모델 구현
 * [GloVe]{:.heading.flip-title} --- Global Vectors for Word Representation (2014)
-1. FastText : Enriching Word Vectors with Subword Information (2016)
-2. ELMo : Deep contextualized word representations (2018)
+* [FastText] : Enriching Word Vectors with Subword Information (2016)
+* [ELMo] : Deep contextualized word representations (2018)
 {:.related-posts.faded}
 
 ## RNN Series Models
@@ -42,14 +33,10 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 8. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
 
-
 ##  Attention Mechanism
 9. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
 10. Transformer : Attention is All You Need (2017)
 {:.related-posts.faded}
-
-
-
 
 ## Pre-trained language models based on the Transformer architecture
 11. GPT-1 : Improving Language Understanding by Generative Pre-Training (2018)
@@ -96,8 +83,10 @@ While this manual tries to be beginner-friendly, as a user of Jekyll it is assum
 [└Tokenizers]: 1-tokenizers.md
 [Embedding]: 2-embedding.md
 [Word2Vec]: 3-Word2Vec.md
-[└CBoW]: 3-Word2Vec-CBow.md
+[└CBoW]: 3-Word2Vec-CBoW.md
 [GloVe]: 4-GloVe.md
+[fastText] : 5-fastText.md
+[ELMo] : 6-ELMo.md
 
 
 
