@@ -17,14 +17,27 @@ permalink: /nlp/
 * [└Sentencepeice]{:.heading.flip-title} --- Sentencepeice 라이브러리에서 BPE(Bite Pair Encoding) 알고리즘 구현
 * [└Tokenizers]{:.heading.flip-title} --- Huggingface의 Tokenizers 라이브러리에서 Wordpiece 알고리즘 구현
 
+[Tokenization]: 1-tokenization.md
+[└Sentencepeice]: 1-sentencepiece.md
+[└Tokenizers]: 1-tokenizers.md
+
+
 ## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
 * [Embedding]{:.heading.flip-title} ---Embedding의 기본 개념과 다양한 알고리즘 소개
 * [Word2Vec]{:.heading.flip-title} --- Efficient Estimation of Word Representations in Vector Space (2013)
 * [└CBoW]{:.heading.flip-title} ---Word2Vec 논문의 CBoW모델 구현
 * [GloVe]{:.heading.flip-title} --- Global Vectors for Word Representation (2014)
-* [FastText] : Enriching Word Vectors with Subword Information (2016)
-* [ELMo] : Deep contextualized word representations (2018)
+* [fastText]{:.heading.flip-title} --- Enriching Word Vectors with Subword Information (2016)
+* [ELMo]{:.heading.flip-title} --- Deep contextualized word representations (2018)
 {:.related-posts.faded}
+
+
+[Embedding]: 2-embedding.md
+[Word2Vec]: 3-Word2Vec.md
+[└CBoW]: 3-Word2Vec-CBoW.md
+[GloVe]: 4-GloVe.md
+[fastText]: 5-fastText.md
+
 
 ## RNN Series Models
 5. RNN : Recurrent neural network based language model (2010) (처음 등장은 1986)
@@ -78,14 +91,7 @@ permalink: /nlp/
 
 
 
-[Tokenization]: 1-tokenization.md
-[└Sentencepeice]: 1-sentencepiece.md
-[└Tokenizers]: 1-tokenizers.md
-[Embedding]: 2-embedding.md
-[Word2Vec]: 3-Word2Vec.md
-[└CBoW]: 3-Word2Vec-CBoW.md
-[GloVe]: 4-GloVe.md
-[fastText] : 5-fastText.md
+
 [ELMo] : 6-ELMo.md
 
 
