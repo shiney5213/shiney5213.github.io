@@ -15,13 +15,15 @@ NLP task
 - 자연어 추론(National Language Inference, NLI): 두 개 이상의 문장이 주어졌을 때 두 문장 간이 관계 분류
 - 질문 응답
 - 감정 분석
-- 텍스트 
+- 텍스트 함의(Textual entailment): 전제가 주어졌을 때 가설이 참인지 결정
+  
 - SQuAD(질의응답), 
-- SNLI(문장 사이의 모순 파악), 
-- SRL(의미역 결정), 
-- Coref(Entity 찾기, Blog),
-- NER(Entity 인식), 
+- SNLI(문장 사이의 모순 파악)
+- SRL(의미역 결정)
+- Coref(Entity 찾기, Blog)
+- NER(Entity 인식) 
 - SST-5(문장 분류)
+- 
 
 
 ## Text Preprocessing
