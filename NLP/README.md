@@ -58,11 +58,13 @@ NLP task
 
 
 ## RNN Series Models
-5. RNN : Recurrent neural network based language model (2010) (처음 등장은 1986)
-6. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
-7. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
-8. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
+[RNN] : Recurrent neural network based language model (2010) (처음 등장은 1986)
+1. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
+2. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
+3. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
+
+[RNN]: 7-RNN.md
 
 ##  Attention Mechanism
 9. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
