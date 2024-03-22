@@ -96,62 +96,60 @@ sitemap: false
 주어진 문서의 주제(latent topic)를 추론하면서 임베딩을 진행하는 기법이다. LDA로 학습이 완료되면, 각 문서가 어떤 주제 분포를 가지고 있는지 확률 벡터형태로 반환하므로, 임베딩 기법의 일종으로 이해할 수 있다.
 
 
-## 임베딩을 만드는 세 철학
+## 임베딩을 만드는 방법
 
-|구분|Bag of Words 가정|언어 모델|분포 가설|
+|구분|Local Representations|Distributed Reprsentations|contextualized representations|
 |:---:|:---:|:---:|:---:|
-|기준|단어 빈도|단어 순서|같이 사용한 단어|
-|대표 통계량|Term-Document Matrix, TF-IDF| - |Word-Context Matrix, PMI, PPMI|
-|통계기반 모델| LDA|N-Gram,  |(단어 수준) Glove, Swivel|
-|NN 기반 모델| Deep Averaging Network | (문장 수준) ELMo, GPT, BERT | (단어 수준) Word2vec, FastText
+|기준|단어 출현 빈도|단어의 분포(문맥)|단어 순서|
+|가정| Bag Of Word | 분포 가설 | 언어 모델 |
+|대표 통계량|TDM, TF-IDF| Word-Context Matrix, PMI, PPMI | - |
+|통계기반 모델| N-gram, LDA|  [단어 수준] Glove(추론 함께 사용), Swivel| -|
+|추론 기반 모델(NN)| Deep Averaging Network | [단어 수준] Word2vec, FastText | [문장 수준] ELMo, GPT, BERT
 
 
+### Local Representations (국소 표현) = Discrete Representations (이산 표현)
+  - 해당 단어만 보고, 특정값을 매핑하여 단어 표현하는 방법
+#### 국소 표현 방법
+- One-hot Vector
+- N-gram
+- Count Based : Bag og Words, DTM
 
-### Bow(Bag of Words) 가정
-단어들의 순서는 전혀 고려하지 않고, 단어들의 출현 빈도(frequency)에만 집중하여 표현하는 방법이다.<br>
-각 단어가 등장한 횟수를 수치화하는 방법으로, 주로 어떤 단어가 얼마나 등장했는지를 기준으로 문서의 성격을 판단할 때 사용한다.
+### Continuous Representations( 연속 표현) = `Distributed Reprsentations(분산 표현)`
+  - 해당 단어와 주변의 문맥을 고려하여 단어 표현하는 방법 -> 단어의 의미, 뉘앙스 표현 가능
+  -  단어를 고차원 벡터 공간에 매핑하여 단어의 의미를 담는 것
+  - 단어의 의미를 문맥상 분포적 특성을 통해 나타남 -> 유사한 문맥에서 등장하는 단어는 비슷한 벡터 공간상 위치를 가짐
+  
+#### 이론적 토대: `분포 가설(Distributional hypothesis)`
+> - 단어의 의미는 그 단어가 사용된 맥락(주변 단어)에 의해 형성한다는 가정 
+> - 자연어 처리에서 분포(distribution):  특정 범위(window) 내에 등장하는 문맥의 집합
+> - 분포 가설의 전제 : 개별 단어의 분포는 그 단어가 문장 내 위치와 이웃 단어 등에 따라 달라지므로, 어떤 단어 쌍(pair)이 비슷한 문맥 환경에 자주 등장한다면 그 의미도 유사할 것
 
-#### DTX(Document-Term Matrix, 문서 단어 행렬)
-다수의 문장에 등장하는 각 단어들의 빈도를 행렬로 표현한 것을 말한다.<br>
-간단하고 구현하기 쉽지만, 대부분의 값이 0인 희소 행렬(sparse matrix)이므로 많은 저장공간과 높은 계싼 복잡도를 요구한다.<br>
-또한 단순 빈도 수 기반이므로, 불용어(stopwords)와 중요한 단어에 대한 구분이 어렵다.<br>
+#### 분산 표현 방법
+##### Count Based(통계 기반) 
+- 동시발생행렬 (TF-IDF, PMI, PPMI, SVD)
+- Full Document(LSA)
+- Windows(Glove): 통계 기반 + 추론 기반
 
+##### Prediction Based(추론 기반) 
+- Word2Vec
+- FastText
 
-#### TF-IDF(Term Frequency-Inverse Document Frequency, 단어 빈도-역 문서 빈도)
-- TF(Term Frequency, 단어 빈도) : 특정 문서(d) 내에서 특정 단어(t)의 빈도 수를 나타내는 값
-  > TF(dt) = count(t,d) 
-  > TF값이 높으면 특정 문서에서 자주 사용되는 단어-> 전문 용어나 관용어로 간주
-  > TF값이 낮으면 특정 문서에서 적게 사용되는 단어 -> 
+### `contextualized representations`
+- 기존 연구 : 한 단어의 의미가 항상 고정되어 있다는 한계 -> 단어의 '형태'가 같으면 같은 의미로 파악
+- 문맥에 따라 단어를 여러가지 의미로 보고, 의미를 반영한 벡터 표현
+  
+#### 이론적 토대 : `언어 모델(language model)`
+- 입력된 문장으로 각 문장을 생성할 수 있는 확률을 계산하는 모델
+- 이를 위해 주어진 문장을 바탕으로 문맥을 이해하고, 문장 구성에 대한 예측 수행
 
-- DF(Document Frequency, 문서 빈도) : 한 단어(t)가 얼마나 많은 문서(D)에 나타나는지 계산
-
-  > DF(t,D) = count(t∈d: d∈D)<br>
-  > DF값이 높으면 많은 문서에 등장 -> 널리 사용되어 중요도 낮은 단어<br>
-  > DF값이 낮으면 적은 수의 문서에 등장 -> 특정 문맥에서만 사용되는 중요도 높은 단어<br>
-
-- IDF(Inverse Doument Frequency, 역문서 빈도) : 특정문서 내에서 특정 단어(t)의 중요도 표현
-
-  > IDF(t, D) = log( count(D) / 1 + DF(t, D))
-  > DF가 높으면 해당 단어(t)가 일반적이 중요하지 않다는 의미 -> 역수를 취해 단어 빈도가 적을 수록 IDF가 커지도록 보정
-  > IDF값이 높으면 특정 문서에만 자주 등장하는 단어 -> 중요도 높음.
-  > IDF값이 낮으면 모든 문서에 자주 등장하는 단어-> 중요도 낮음
-
-- TF-IDF
-  > TF-IDF(t, d, D) = TF(t, d) * IDF(t, d)
-  > TF-IDF값이 크면 : 문서 내에 단어가 자주 등장하지만, 전체 문서 내에는 해당 단어가 적게 등장 ->중요도 높음.
-  > TF-IDF 값이 작으면 전체 문서 내 해당 단어가 자주 등장 (예: 관사, 관용어) -> 중요도 낮음
-
-### 언어 모델(Language Model)
-입력된 문장으로 각 문장을 생성할 수 있는 확률을 계산하는 모델이다.<br>
-이를 위해 주어진 문장을 바탕으로 문맥을 이해하고, 문장 구성에 대한 예측을 수행한다.
-
-#### 자기회귀 언어 모델(Autoregressive Language Model)
+#### 언어 모델 종류
+##### 자기회귀 언어 모델(Autoregressive Language Model)
 입력된 문장(단어들의 시퀀스)의 조건부 확률의 연쇄법칙([Chain rule for conditional probability])을 통해 다음에 올 단어를 예측한다.
 이를 위해 이전에 등장한 모든 토큰의 정보를 고려하며, 문장의 문맥 정보를 파악하여 다음 단어를 생성한다. 
 
 [Chain rule for conditional probability]: https://en.wikipedia.org/wiki/Chain_rule_%28probability%29
 
-#### 통계적 언어 모델(Statistical Language Model, SLM)
+##### 통계적 언어 모델(Statistical Language Model, SLM)
 언어의 통계적 구조를 이용해 문장이나 단어의 시퀀스를 생성하거나 분석한다.<br>
 마르코프 체인(Markoc Chain)은 `빈도` 기반의 조건부 확률 중 하나로, 주어진 데이터에서 각 변수가 발생할 빈도수를 기반으로 확률을 계산한다.<br>  
 이 방법은 단어의 순서와 빈도에만 기초해 문장의 확률을 예측하므로 문맥을 제대로 파악하지 못하면 불완전하거나 부적절한 결과를 생성할 수 있으며<br>
@@ -159,13 +157,27 @@ sitemap: false
 하지만 기존에 학습한 텍스트 데이터에서 패턴을 찾아 확률 분포를 생성하므로,<br>  
 이를 이용해 새로운 문장을 생성할 수 있으며 다양한 텍스트 데이터를 학습할 수 있다.<br>  
 
+#### contextualized representations 모델
+- ELMo(Embeddings from Language Models)
+- ULMFiT(Universal Language Model Fine-tuning)
+- Transformer
+- GPT(Generative Pre-Training Transformer)
+- BERT(Bidirectional Encoder Representation from Transformer)
+
 
 최근 연구되는 자연어 처리 기법은 언어 모델을 이용해 가중치를 사전 학습한다.<br>
 예를 들어 GPT(Generative Pre-trainedTransformer)나 BERT(Bidirectional Encoder Representations from Transformers)는 문장 생성 기법을 이용해 모델을 사전 학습한다.
 {:.note}
 <br>
 
-##### N-gram Language Model
+
+
+
+
+
+
+
+<!-- ##### N-gram Language Model
 이전에 등장한 모든 단어를 고려하는 것이 아닌, 일부 단어(n개)만 고려하여 다음 단어를 예측하는 모델이다.
 n-gram은 n개의 연속적인 단어 나열을 의미한다. 코퍼스에서 n개의 단어를 하나의 토큰으로 간주하여 다음에 올 단어를 예측한다.
 - unigrams: n이 1 일 때
@@ -177,29 +189,10 @@ n-gram은 n개의 연속적인 단어 나열을 의미한다. 코퍼스에서 n�
 n을 선택할 때 trade-off가 존재한다.<br>
 n을 크게 하면 언어 모델의 성능을 높일 수 있지만, 코퍼스에서 n개의 단어를 선택할 때, 카운트할 수 있는 확률이 적어지므로 희소 문제가 발생한다. 또한 n이 커지면 모델 사이즈가 커진다는 문제가 있다.<br>  
 n을 작게 하면 코퍼스에서 카운트를 잘 할 수 있지만, 정확도는 떨어질 수 있다. 일반적으로 trade-off문제로 인해 정확도를 높이려면 n은 최대 5를 넘게잡아서는 안된다고 권장한다.<br>  
-{:.note}
+{:.note} -->
 <br>
 
-### 분포 가정(Distributional hypothesis, 분포 가설) 
-단어의 의미는 그 단어가 사용된 맥락(주변 단어)에 의해 형성한다는 가정에 기초하고 있다. <br>
-자연어 처리에서 분포(distribution)란 특정 범위(window) 내에 등장하는 문맥의 집합을 가리킨다.<br>
-개별 단어의 분포는 그 단어가 문장 내 위치와 이웃 단어 등에 따라 달라지므로, 어떤 단어 쌍(pair)이 비슷한 문맥 환경에 자주 등장한다면 그 의미도 유사할 것이라는 것이 분포 가설의 전제이다.<br>
 
-- co_occurrence matrix (동시 발행 행렬)
-  > 단어 간의 동시 발생(co-accurrence) 확률 분포를 이용해 단어간 유사성 측정
-  > 모든 단어 각각의 주변 단어의 빈도를 세어 표로 정리한 것
-  > 단어를 벡터로 표현할 수 있음.
-
-- 분산 표현(Distributed Representation)
-  > 단어를 고차원 벡터 공간에 매핑하여 단어의 의미를 담는 것
-  > 단어의 의미를 문맥상 분포적 특성을 통해 나타남 -> 유사한 문맥에서 등장하는 단어는 비슷한 벡터 공간상 위치를 가짐
-  
-- 벡터간 유사도 측정 : 코사인 유사도([cosine similarity])
-
-[cosine similarity]: https://ko.wikipedia.org/wiki/%EC%BD%94%EC%82%AC%EC%9D%B8_%EC%9C%A0%EC%82%AC%EB%8F%84#
-
-- PMI(Pointwise Mutual Information, 점별 상호정보량)
-- PPMI(Positive PMI, 양의 상호 정보량)
 <br>
 <br>
 <br>

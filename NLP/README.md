@@ -37,9 +37,12 @@ NLP task
 
 
 ## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
-* [Embedding]{:.heading.flip-title} ---Embedding의 기본 개념과 다양한 알고리즘 소개
+* [Embedding]{:.heading.flip-title} --- Embedding의 기본 개념과 다양한 알고리즘 소개
+* [└Bag_Of_Words]{:.heading.flip-title} --- Local Representation 방법 중 Bag Of Words 소개
+<!-- * [└Distributional_hypothesis]{:.heading.flip-title} --- Continous Representation 방법의 가정인 `분포 가설' 소개
+* [└Language_Model]{:.heading.flip-title} --- Continous Representation 방법의 가정인 '언어 모델' 소개 -->
 * [Word2Vec]{:.heading.flip-title} --- Efficient Estimation of Word Representations in Vector Space (2013)
-* [└CBoW]{:.heading.flip-title} ---Word2Vec 논문의 CBoW모델 구현
+* [└CBoW]{:.heading.flip-title} --- Word2Vec 논문의 CBoW모델 구현
 * [GloVe]{:.heading.flip-title} --- Global Vectors for Word Representation (2014)
 * [fastText]{:.heading.flip-title} --- Enriching Word Vectors with Subword Information (2016)
 <!-- * [└fastText]{:.heading.flip-title} --- gensim library를 이용하여 fastText 구현 -->
@@ -48,6 +51,12 @@ NLP task
 
 
 [Embedding]: 2-embedding.md
+[└Bag_Of_Words]: 2-1-BagOfWords.md
+[└Distributional_hypothesis]: 2-2-Distributional-hypothesis.md
+[└Language_Model]: 2-3-Language-Model.md
+
+
+
 [Word2Vec]: 3-Word2Vec.md
 [└CBoW]: 3-Word2Vec-CBoW.md
 [GloVe]: 4-GloVe.md
@@ -58,13 +67,15 @@ NLP task
 
 
 ## RNN Series Models
-[RNN] : Recurrent neural network based language model (2010) (처음 등장은 1986)
+[RNN]{:.heading.flip-title} --- Recurrent neural network based language model (2010) (처음 등장은 1986)
+[└RNN]{:.heading.flip-title} --- pytorch tutorial에 있는 RNN 코드 구현
 1. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
 2. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
 3. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
 
 [RNN]: 7-RNN.md
+[└RNN]: 7_RNN-code.md
 
 ##  Attention Mechanism
 9. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
