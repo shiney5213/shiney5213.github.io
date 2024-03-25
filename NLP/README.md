@@ -45,7 +45,7 @@ NLP task
 * [└CBoW]{:.heading.flip-title} --- Word2Vec 논문의 CBoW모델 구현
 * [GloVe]{:.heading.flip-title} --- Global Vectors for Word Representation (2014)
 * [fastText]{:.heading.flip-title} --- Enriching Word Vectors with Subword Information (2016)
-<!-- * [└fastText]{:.heading.flip-title} --- gensim library를 이용하여 fastText 구현 -->
+<!-- * [└fastText]{:.heading.flip-title} --- gensim library를 이용하여 fastText 구현 -> 라이브러리 import 실패-->
 * [ELMo]{:.heading.flip-title} --- Deep contextualized word representations (2018)
 {:.related-posts.faded}
 
@@ -67,15 +67,16 @@ NLP task
 
 
 ## RNN Series Models
-[RNN]{:.heading.flip-title} --- Recurrent neural network based language model (2010) (처음 등장은 1986)
-[└RNN]{:.heading.flip-title} --- pytorch tutorial에 있는 RNN 코드 구현
-1. LSTM : Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장은 1997)
+* [RNN]{:.heading.flip-title} --- Recurrent neural network based language model (2010) (처음 등장: 1986)
+* [└RNN]{:.heading.flip-title} --- pytorch tutorial에 있는 RNN 코드 구현
+* [LSTM]{:.heading.flip-title} --- Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장: 1997)
 2. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
 3. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
 
 [RNN]: 7-RNN.md
-[└RNN]: 7_RNN-code.md
+[└RNN]: 7-RNN-code.md
+[LSTM]: 8-LSTM.md
 
 ##  Attention Mechanism
 9. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
