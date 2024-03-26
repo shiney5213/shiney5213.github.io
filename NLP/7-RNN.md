@@ -15,9 +15,10 @@ sitemap: false
 - Subjects:	Computation and Language (cs.CL) 
 - Tomáš Mikolov, Martin Karafiát, Lukáš Burget, Jan Černocký, Sanjeev Khudanpur
 - summary
-  >
+  > 시계열 데이터의 패턴을 활용할 수 있는 순환 신경망(RNN)
 - 사용 기법
-  > -
+  > - Dynamic model: 보통 train시 학습되고, test에서는 예측값만 계산하지만, RNN은 test에서도 학습이 진행됨
+
 [download]: https://arxiv.org/abs/1506.00019
 
 1. this unordered seed list will be replaced by toc as unordered list
