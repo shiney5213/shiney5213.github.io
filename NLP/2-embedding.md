@@ -100,10 +100,10 @@ sitemap: false
 
 |구분|Local Representations|Distributed Reprsentations|contextualized representations|
 |:---:|:---:|:---:|:---:|
-|기준|단어 출현 빈도|단어의 분포(문맥)|단어 순서|
+|기준|단어 출현 빈도|단어의 분포(문맥), 단어 순서 무시|단어 순서|
 |가정| Bag Of Word | 분포 가설 | 언어 모델 |
 |대표 통계량|TDM, TF-IDF| Word-Context Matrix, PMI, PPMI | - |
-|통계기반 모델| N-gram, LDA|  [단어 수준] Glove(추론 함께 사용), Swivel| -|
+|통계기반 모델| N-gram, LDA|  [단어 수준] 동시 발생 행렬 + SVD, Glove(추론 함께 사용), Swivel| -|
 |추론 기반 모델(NN)| Deep Averaging Network | [단어 수준] Word2vec, FastText | [문장 수준] ELMo, GPT, BERT
 
 
