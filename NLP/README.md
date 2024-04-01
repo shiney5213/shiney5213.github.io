@@ -36,11 +36,11 @@ NLP task
 [└Tokenizers]: 1-tokenizers.md
 
 
-## Word Embedding : 단어를 임의의 벡터로 표현하는 방식  
+## Word Embedding : 단어를 임의의 벡터로 표현하는 방식 , 분포 가설에 기반
 * [Embedding]{:.heading.flip-title} --- Embedding의 기본 개념과 다양한 알고리즘 소개
 * [└Bag_Of_Words]{:.heading.flip-title} --- Local Representation 방법 중 Bag Of Words 소개
-<!-- * [└Distributional_hypothesis]{:.heading.flip-title} --- Continous Representation 방법의 가정인 `분포 가설' 소개
-* [└Language_Model]{:.heading.flip-title} --- Continous Representation 방법의 가정인 '언어 모델' 소개 -->
+<!-- * [└Distributional_hypothesis]{:.heading.flip-title} --- Continous Representation 방법의 가정인 `분포 가설' 소개-->
+<!-- * [└Language_Model]{:.heading.flip-title} --- Continous Representation 방법의 가정인 '언어 모델' 소개  -->
 * [Word2Vec]{:.heading.flip-title} --- Efficient Estimation of Word Representations in Vector Space (2013)
 * [└CBoW]{:.heading.flip-title} --- Word2Vec 논문의 CBoW모델 구현
 * [GloVe]{:.heading.flip-title} --- Global Vectors for Word Representation (2014)
@@ -66,17 +66,21 @@ NLP task
 
 
 
-## RNN Series Models
+## RNN Series Models --- 언어 모델에 기반, 평가 척도 : perplexity 사용
 * [RNN]{:.heading.flip-title} --- Recurrent neural network based language model (2010) (처음 등장: 1986)
-* [└RNN]{:.heading.flip-title} --- pytorch tutorial에 있는 RNN 코드 구현
+* [└RNN]{:.heading.flip-title} --- pytorch tutorial에 있는 RNN 코드 구현(character 기반 사람 이름 분류)
 * [LSTM]{:.heading.flip-title} --- Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장: 1997)
-2. GRU :  Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
-3. Seq2Seq : Sequence to Sequence Learning with Neural Networks (2014)
+* [└LSTM]{:.heading.flip-title} --- 삼성전자 주식의 종가를 예측하는 LSTM 코드 구현
+* [GRU]{:.heading.flip-title} --- Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
+* [Seq2Seq]{:.heading.flip-title} ---Sequence to Sequence Learning with Neural Networks (2014)
 {:.related-posts.faded}
 
 [RNN]: 7-RNN.md
 [└RNN]: 7-RNN-code.md
 [LSTM]: 8-LSTM.md
+[└LSTM]: 8-LSTM-code.md
+[GRU]: 9-GRU.md
+
 
 ##  Attention Mechanism
 9. Attention : Neural Machine Translation by Jointly Learning to Align and Translate (2015)
