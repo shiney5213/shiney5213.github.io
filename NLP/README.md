@@ -71,15 +71,16 @@ NLP task
 * [└RNN]{:.heading.flip-title} --- pytorch tutorial에 있는 RNN 코드 구현(character 기반 사람 이름 분류)
 * [LSTM]{:.heading.flip-title} --- Long Short Term Memory Recurrent Neural Network Architectures for Large Scale Acoustic Modeling (2014) (처음 등장: 1997)
 * [└LSTM]{:.heading.flip-title} --- 삼성전자 주식의 종가를 예측하는 LSTM 코드 구현
-* [GRU]{:.heading.flip-title} --- Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
 * [Seq2Seq]{:.heading.flip-title} ---Sequence to Sequence Learning with Neural Networks (2014)
+* [GRU]{:.heading.flip-title} --- Learning Phrase Representation using RNN Encoder-Decoder for Stistical Machine Translation (2014)
 {:.related-posts.faded}
 
 [RNN]: 7-RNN.md
 [└RNN]: 7-RNN-code.md
 [LSTM]: 8-LSTM.md
 [└LSTM]: 8-LSTM-code.md
-[GRU]: 9-GRU.md
+[Seq2Seq]: 9-Seq2Seq.md
+[GRU]: 10-GRU.md
 
 
 ##  Attention Mechanism
