@@ -132,7 +132,7 @@ sitemap: false
     > 그러나 특정 영역의 데이터 양이 제한되어 있는 경우, 성능은 고품질의 데이터셋의 크기에 의존함. 단순한 scale up만으로 큰 진전으로 이어지지 않으므로, 보다 발전된 기술이 필요<br>
 - 단어의 분산 표현의 필요성
    >  큰 데이터 세트에서 복잡한 모델 훈련 가능 
-   > 단어의 분산 표현을 사용하는 신경망 기반 언어 모델이 좋은 성능을 보이고 있으므로, 이러한 고급 기술에 집중해야 함.<br>
+   > 단어의 분산 표현을 사용하는 신경망 기반 언어 모델이 N 그램 모델보다 좋은 성능을 보이고 있으므로, 이러한 고급 기술에 집중해야 함.<br>
 
 ###  Goals of the Paper
 - word vector representation techniques
@@ -149,8 +149,14 @@ sitemap: false
 - neural network language model (NNLM)
   > 단어 벡터 학습에 관한 다양한 NNLM 모델이 사용<br>
   > 그러나 대부분의 이전 연구는 훈련 과정에서 많은 컴퓨팅 자원 소모
-
-
+- A neural probabilistic language model 
+  > - 선형 투사 계층과 비선형 은닉 계층을 가진 피드포워드 신경망이 사용되어 단어 벡터 표현과 통계적 언어 모델을 동시에 학습
+- Language Modeling for Speech Recognition in Czech / y. Neural network based language models for higly inflective languages
+  > - 단어 벡터를 먼저 단일 은닉 계층을 사용하여 신경망으로 학습한 후, 학습된 단어 벡터를 사용하여 NNLM을 훈련
+-  Language Modeling for Speech Recognition in Czech
+  > - 서로 다른 모델 아키텍처를 사용하여 다양한 말뭉치에서 훈련하여 단어 벡터 추정
+  > -  훈련에 대해 상당히 더 많은 계산 비용 
+  
 ## (2) Model Archetectures
 - 다양한 word vector 표현 모델, 
    > 잠재 의미 분석 (LSA) : 대규모 dataset에서 비쌈<br>
@@ -203,7 +209,7 @@ sitemap: false
 ## (3) New Log-Linear Nodels
 - Architecture 목표 :  모델을 단순화하여 계산 복잡도 최소화
   > 신경망 : 비선형 관계를 처리할 수 있다는 장점이 있지만, 은닉 계층이 계산 복잡도를 높임<br>
-  > 데규모 데이터 셋에서 효율적으로 훈련할 수 있는 간단한 모델 생성
+  > -> 데규모 데이터 셋에서 효율적으로 훈련할 수 있는 간단한 모델 생성
 - training 단계
   > 1. 간단한 모델을 사용하여 연속형 단어 벡터를 학습<br>
   > 2. 분산된 단어 표현을 기반으로 N-gram 신경망 언어 모델 (NNLM) 을 훈련
@@ -213,25 +219,27 @@ sitemap: false
    > 비선형 은닉 계층이 제거되고 모든 단어에 대해 투영 계층 공유<br>
    > 모든 단어를 같은 위치에 투영하고 해당 벡터의 평균 구하기
 - CBoW
-  >   문맥에 따라 과거와 미래의 단어를 모두 고려하여 중심 단어 예측<br>
-  > 단어 순서는 고려하지 않음 -> Bag-of-Words<br>
+  >  문맥에 따라 과거와 미래의 단어를 모두 고려하여 중심 단어 예측<br>
+  > 단어 순서는 고려하지 않음 -> `Bag-of-Words`<br>
   > input:  네 개의 미래 단어와 네 개의 과거 단어<br>
   > model: 로그-선형 분류기 구축<br>
   > 목표: 현재(가운데) 단어를 올바르게 분류
 - 훈련 복잡도
    > Q = N × D + D × log2(V)<br>
    > (N은 단어 수, D는 단어 벡터의 차원, V는 어휘 크기)<br>
-   > 텍스트의 연속 분산 표현을 사용
+   > CBOW : 맥락의 연속 분산 표현을 사용
+  - []
 
 ### Continuous Skip-gram Model
 - Skip-gram
    > 현재 단어에 기반하여 컨텍스트 예측<br>
    > input: 현재 단어<br>
-   > model: 로그 선형 분류기<br>
+   > model: 연속 투사 계층을 가진 로그 선형 분류기<br>
    > 목표: 현재 단어의 앞과 뒤의 특정 범위 내에 있는 단어를 예측<br>
    > 학습 : 각 훈련 단어에 대해 범위 < 1; C >에서 임의의 숫자 R을 선택한 다음, 현재 단어의 과거와 미래의 R개의 단어를 정확한 레이블로 사용<br>
    > 출력: R+ R 단어 -> R × 2 단어 분류가 수행
 - 현재 단어로부터 멀리 있는 단어
+  > 먼 단어 사용시 target 단어 백터의 품질은 향상되지만 계산 복잡도 증가
   > 현재 단어와 관련이 적음<br>
   > 멀리 있는 단어로부터 표본을 추출하는 횟수를 줄임으로써 해당 단어에 가중치를 덜 부여
 - Q = C × (D + D × log2(V))
