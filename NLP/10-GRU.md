@@ -158,14 +158,122 @@ sitemap: false
   > - 짧은 시간의 종속성을 포착한 유닛: 자주 활성화되는 reset gate가 더 영향
   > - 장기적인 종속성을 포착한 유닛: update gate가 더 활성화
 
-## (3) Statistical Machine Translatio
+## (3) Statistical Machine Translation
+- SMT의 목표 : source 문장(e)가 주어졌을 때 번역 문장(f) 찾기
+- p(f | e) ∝ p(e | f)p(f)
+  > -  p(f | e) : 소스 문장이 주어졌을 때 번역 문장이 나타날 조건부 확률 -> maximize해야 함
+  > -  p(e | f) : 번역 모델
+  > -  p(f) : 언어 모델
+
+-  log p(f | e)  
+  > - SMT 시스템에서 log p(f | e)의 추가적인 특성과 해당 가중치를 가진 로그 선형 모델로 모델링
+  > - 로그 선형 모델: 추가적인 특징과 그에 상응하는 가중치(weights)를 사용하여 번역의 확률 결정
+
+- ![formula9](/assets/img/nlp/10_GRU_formula9.png){: width="100%" height="100%"}
+> - f_n: n번째 특징(feature)
+> - w_n은 해당 특징에 대한 가중치(weight)
+> -Z(e): 가중치에 의존하지 않는 정규화 상수(normalization constant)
+>
+
+- BLEU 점수
+  > - 번역의 품질을 측정하는 데 널리 사용되는 메트릭 중 하나
+  > - 실제 번역과 인간의 참조 번역 간의 일치 정도를 고려한 자동 번역 품질 평가 도구
+
+- log p(e | f) : 번역 모델
+  > -  소스와 타겟 문장에서 일치하는 구문들의 번역 확률로 분해
+  > -  이러한 확률들은 다시 한 번 로그 선형 모델에서 추가적인 특성으로 간주
+  > -  BLEU 점수를 최대화하기 위해 이에 상응하는 가중치가 부여
+
 ### 3.1 Scoring Phrase Pairs with RNN Encoder–Decoder
+#### 학습 
+- Phrase Pairs 데이터를 이용하여 RNN Encoder–Decoder 학습
+  > - 신경망 모델은 서로 다른 언어의 문구 쌍에 노출되어 번역 목적에 맞게 효과적으로 인코딩 및 디코딩하는 방법 학습
+
+- 학습한 모델에서 생성한 phrase pairs 에 대한 점수를 로그 선형 모델에 feature로 사용
+  > - SMT 디코더 튜닝할 때 RNN 인코더-디코더에서 얻은 점수를 로그 선형 모델에 통합
+  > -  학습한 프레이즈 쌍의 표현을 활용하여 번역 프로세스를 개선
+  > - 기존의 phrase table에 phrase pairs의 점수 추가
+  > - 새로운 점수가 최소한의 추가 계산 비용으로 기존의 튜닝 알고리즘에 들어갈 수 있음
+
+- corpora 안에 있는 각 phrase pairs의 정규화된 빈도 무시
+  > - 학습 과정 간소화
+  > - 발생 빈도에 따른 단순 암기 방지
+
+- 모델이 언어의 규칙성을 학습하는데 초점
+  > - 목표 : 그럴듯한 번역과 그럴듯하지 않은 번역을 구별하는 것
+  > - 문구와 번역의 기본 구조를 학습하여 언어의 뉘앙스를 이해하고 번역 품질을 향상시키는 데 도움
 ### 3.2 Related Approaches: Neural Networks in Machine Translation
+#### SMT(SMT)에서 신경망을 활용하는 연구
+- Schwenk(Schwenk, 2012):구문 쌍의 점수화에 대한 유사한 접근법을 제안
+- 데블린 등(Devlin et al., 2014) : 번역 모델을 모델링하기 위해 피드포워드 신경망을 사용하는 것을 제안
+- Zou 등(Zou et al., 2013):  단어/구문의 이중 어휘 임베딩을 학습 제악
+- Chandar(Chandar et al., 2014): 피드포워드 신경망을 훈련하여 입력 구문의 단어 가방 표현(bag-of-words representation)에서 출력 구문으로의 매핑을 학습
+- Kalchbrenner 등(Kalchbrenner and Blunsom, 2013) : Recurrent Continuous Translation Model(Model 2)
 
 ## (4) Experiments
+- English/French translation task
 ### 4.1 Data and Baseline System
+#### data
+- Moore and Lewis (2010) 와 Axelrod et al. (2011) 이 제안한  데이터 선택 방법 사용
+- 언어 모델링: 20억 단어 중 41.8억 단어의 하위 집합 선택
+-  RNN 인코더-디코더 훈련:  8.5억 단어 중 3.48억 단어의 하위 집합을 선택
+-  데이터 선택 및 가중치 튜닝:  MERT 사용
+-  테스트 세트:  newstest2012와 2013를 사용
+
+#### 신경망 훈련
+- 데이터세트의 93% 를 차지하는 영어 및 프랑스어 상위 15,000개 단어로 어휘를 제한
+-  어휘를 벗어난 단어: 특수 토큰([UNK])에 매핑
+
+### 실험 결과
+- Moses를 사용하여 구축한 베이스라인 프레이즈 기반 SMT 시스템
+- train set :  BLEU 점수 30.64점
+- test set:  BLEU 점수 33.3점
+
 #### 4.1.1 RNN Encoder–Decoder
+##### Architecture
+- input unit: 100개
+- hidden unit : 1000개
+- output unit: 500개
+-  활성화 함수: 쌍곡선 탄젠트 함수
+
+##### hyperparams
+- 가중치 매개변수: 평균이 0이고 표준 편차가 0.01로 고정된 등방성 제로 평균(백색) 가우시안 분포에서 샘플링을 통해 초기화
+- 순환 가중치 행렬 :  백색 가우시안 분포에서 샘플링하고 그 왼쪽 특이벡터 행렬 사용
+- Adadelta와 확률적 경사 하강법 사용 (하이퍼파라미터: ε = 10^-6 및 ρ = 0.95 )
+
+##### data
+- 무작위로 선택된 64개의 구문 쌍을 사용
+  
 #### 4.1.2 Neural Language Model
+##### Continuous Space Language Model(CSLM) 훈련
+- 목적: 디코딩 과정 중에 부분 번역에 점수를 매기기 위해 사용
+- 모델
+> - 입력 단어: 임베딩 공간 R^512로 투영 후 3072차원 벡터를 형성
+> - 모델 : 512 -> 3072 -> ReLU 레이어(1536 ) -> ReLU 레이어(1024) ->  소프트맥스 레이어(출력 레이어)
+> - 모든 가중치 매개변수 :  균등하게 -0.01과 0.01 사이에서 초기화
+> - 검증 퍼플렉서티가 10 에포크 동안 개선되지 않을 때까지 훈련
+- 결과 : 훈련 후, 언어 모델의 퍼플렉서티 :  45.80
+- 계산 복잡성 해결하기 위해 CSLM에 의한 n-gram 스코어링이 구현
+  > - 디코더에는 스택 서치를 수행하는 동안 n-그램을 집계하기 위한 버퍼 사용
+  > - 버퍼가 가득 차거나 스택이 제거될 때에만 n-그램이 CSLM에 의해 스코어링
+> - Theano를 사용하여 GPU에서 빠른 행렬-행렬 곱셈 수행
+
 ### 4.2 Quantitative Analysis
+- RNN Encoder- Decoder 모델에서 계산된 점수를 추가했을 때 성능 향상
+-  CSLM과 RNN 인코더-디코더로부터의 구문 점수를 함께 사용했을 때 최고  성능
+-  
 ### 4.3 Qualitative Analysis
+- RNN 인코더-디코더: 대부분 실제 번역이나 문자 그대로 번역에 더 가까움
+  
 ### 4.4 Word and Phrase Representations
+![figure4](/assets/img/nlp/10_GRU_figure4.png){: width="100%" height="100%"}
+-  RNN 인코더-디코더에 의해 학습된 단어 임베딩 행렬을 사용하여 단어의 2차원 임베딩
+> - 의미적으로 유사한 단어들이 함께 클러스터링되는 것 확인
+
+
+![figure5](/assets/img/nlp/10_GRU_figure5.png){: width="100%" height="100%"}
+-  Barnes-Hut-SNE를 사용하여 시각화
+  > - 구문과 의미론적 구조를 모두 포착
+> - 왼쪽 아래 플롯:  대부분의 구문은 시간의 기간에 관한 것이며, 구문적으로 유사한 것들은 함께 클러스터링
+> - 오른쪽 아래 플롯:  국가 또는 지역 등 의미적으로 유사한 구문들의 클러스터 시각화
+> - 위쪽 오른쪽 플롯: 구문적으로 유사한 구문
